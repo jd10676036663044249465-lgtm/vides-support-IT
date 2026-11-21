@@ -145,7 +145,7 @@ const translations = {
     setEyebrow('.contact-section .eyebrow', copy.contact.eyebrow); $('#contact-title').textContent = copy.contact.title; $('.contact-inner > div:first-child > p:last-child').textContent = copy.contact.description; setCtaText($('.contact-actions .cta-button'), copy.contact.action); $('.footer-brand p').textContent = copy.footer.description; $$('.footer-label')[0].textContent = copy.footer.explore; $$('.footer-label')[1].textContent = copy.footer.connect; $$('.footer-main .footer-column:nth-child(2) a').forEach((link, index) => { link.textContent = copy.footer.links[index]; }); const footerBottom = $$('.footer-bottom > span'); if (footerBottom[0]) footerBottom[0].innerHTML = `© <span data-year>${new Date().getFullYear()}</span> Vides Support IT. ${copy.footer.rights}`; if (footerBottom[1]) footerBottom[1].textContent = copy.footer.location;
     $$('[data-language]').forEach((button) => { const selected = button.dataset.language === activeLanguage; button.classList.toggle('is-active', selected); button.setAttribute('aria-pressed', String(selected)); }); updateWhatsAppLinks(activeLanguage); setHeroSlide(heroIndex);
   };
-  $$('[data-language]').forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language))); applyLanguage('en');
+  $$('[data-language]').forEach((button) => button.addEventListener('click', () => { applyLanguage(button.dataset.language); if (isMobile()) setMobileMenu(false); })); applyLanguage('en');
   const year = $('[data-year]'); if (year) year.textContent = new Date().getFullYear();
 
   /* Fixed FAQ/contact widget */
